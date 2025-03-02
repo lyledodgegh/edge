@@ -2,7 +2,7 @@
 # Documentation: https://aka.ms/AzureArcK8sDocs
 
 # Log into Azure
-az login --use-device-code
+az login --use-device-code --tenant ""
 
 # Set Azure subscription
 az account set --subscription ""
