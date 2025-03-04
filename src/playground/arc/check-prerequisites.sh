@@ -1,5 +1,18 @@
 #!/bin/bash
 
+# myAzureTenantId
+# myAzureSubscriptionId
+# myAzureServicePrincipalId
+# myAzureServicePrincipalSecret
+# myAzureResourceGroup
+# myAzureLocation
+# myAzureTagsDatacenter
+# myAzureTagsCity
+# myAzureTagsStateOrDistrict
+# myAzureTagsCountryOrRegion
+# myAzureTagsOwner
+# myAzureTagsEnvironment
+
 # Check if the environment variable 'myAzureTenantId' is set
 if [ -z "$myAzureTenantId" ]; then
     # Prompt the user for the value of 'myAzureTenantId'
