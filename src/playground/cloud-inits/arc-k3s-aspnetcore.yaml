@@ -15,7 +15,11 @@ runcmd:
   - curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
   - curl -sL https://gbl.his.arc.azure.com/azcmagent-linux | sudo bash
   - curl -sfL https://get.k3s.io | sh -
+  - sudo chmod +r /etc/rancher/k3s/k3s.yaml
+  - export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
   - sudo apt update -y && sudo apt upgrade -y && sudo apt dist-upgrade -y && sudo apt autoremove -y && sudo apt auto-clean -y
-  - sudo azcmagent connect --service-principal-id __MYAZURESERVICEPRINCIPALID__ --service-principal-secret __MYAZURESERVICEPRINCIPALSECRET__ --resource-group __MYAZURERESOURCEGROUP__ --tenant-id __MYAZURETENANTID__ --location __MYAZURELOCATION__ --subscription-id __MYAZURESUBSCRIPTIONID__ --cloud "AzureCloud" --tags 'ArcSQLServerExtensionDeployment=Disabled' --correlation-id $(uuidgen)
+  - az extension add --name connectedk8s
+  - az login --service-principal --username __MYAZURESERVICEPRINCIPALID__ --password __MYAZURESERVICEPRINCIPALSECRET__ --tenant __MYAZURETENANTID__
+ # - sudo azcmagent connect --service-principal-id __MYAZURESERVICEPRINCIPALID__ --service-principal-secret __MYAZURESERVICEPRINCIPALSECRET__ --resource-group __MYAZURERESOURCEGROUP__ --tenant-id __MYAZURETENANTID__ --location __MYAZURELOCATION__ --subscription-id __MYAZURESUBSCRIPTIONID__ --cloud "AzureCloud" --tags 'ArcSQLServerExtensionDeployment=Disabled' --correlation-id $(uuidgen)
   - az connectedk8s connect --name __CLUSTERNAME__ --resource-group __MYAZURERESOURCEGROUP__ --location __MYAZURELOCATION__ --correlation-id "$(uuidgen)" --tags "Datacenter=__MYAZURETAGSDATACENTER__ City=__MYAZURETAGSCITY__ StateOrDistrict=__MYAZURETAGSSTATEORDISTRICT__ CountryOrRegion=__MYAZURETAGSCOUNTRYORREGION__ owner=__MYAZURETAGSOWNER__ environment=__MYAZURETAGSENVIRONMENT__"
 

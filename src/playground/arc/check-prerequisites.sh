@@ -66,7 +66,7 @@ if [ -z "$myAzureServicePrincipalSecret" ]; then
     # Inform the user to source the .bashrc file
     echo "The environment variable 'myAzureServicePrincipalSecret' has been set. Please run 'source ~/.bashrc' to apply the changes."
 else
-    echo "The environment variable 'myAzureServicePrincipalSecret' is already set to '$myAzureServicePrincipalSecret'."
+    echo "The environment variable 'myAzureServicePrincipalSecret' is already set to '########################################'."
 fi
 
 # Check if the environment variable 'myAzureResourceGroup' is set
