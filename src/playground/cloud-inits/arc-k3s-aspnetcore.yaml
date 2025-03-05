@@ -1,0 +1,21 @@
+#cloud-config
+package_update: true
+package_upgrade: true
+
+packages:
+  - wget
+  - net-tools
+
+runcmd:
+  - wget https://packages.microsoft.com/config/debian/12/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
+  - sudo dpkg -i packages-microsoft-prod.deb
+  - rm packages-microsoft-prod.deb
+  - sudo apt-get update -y
+  - sudo apt-get install -y aspnetcore-runtime-9.0
+  - curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+  - curl -sL https://gbl.his.arc.azure.com/azcmagent-linux | sudo bash
+  - curl -sfL https://get.k3s.io | sh -
+  - sudo apt update -y && sudo apt upgrade -y && sudo apt dist-upgrade -y && sudo apt autoremove -y && sudo apt auto-clean -y
+  - sudo azcmagent connect --service-principal-id __MYAZURESERVICEPRINCIPALID__ --service-principal-secret __MYAZURESERVICEPRINCIPALSECRET__ --resource-group __MYAZURERESOURCEGROUP__ --tenant-id __MYAZURETENANTID__ --location __MYAZURELOCATION__ --subscription-id __MYAZURESUBSCRIPTIONID__ --cloud "AzureCloud" --tags 'ArcSQLServerExtensionDeployment=Disabled' --correlation-id $(uuidgen)
+  - az connectedk8s connect --name __CLUSTERNAME__ --resource-group __MYAZURERESOURCEGROUP__ --location __MYAZURELOCATION__ --correlation-id "$(uuidgen)" --tags "Datacenter=__MYAZURETAGSDATACENTER__ City=__MYAZURETAGSCITY__ StateOrDistrict=__MYAZURETAGSSTATEORDISTRICT__ CountryOrRegion=__MYAZURETAGSCOUNTRYORREGION__ owner=__MYAZURETAGSOWNER__ environment=__MYAZURETAGSENVIRONMENT__"
+

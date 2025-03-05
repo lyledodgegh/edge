@@ -13,4 +13,3 @@ runcmd:
   - sudo apt-get update -y
   - sudo apt-get install -y aspnetcore-runtime-9.0
   - sudo apt update -y && sudo apt upgrade -y && sudo apt dist-upgrade -y && sudo apt autoremove -y && sudo apt auto-clean -y
-  #- curl -sfL https://get.k3s.io | K3S_TOKEN=token sh - 
