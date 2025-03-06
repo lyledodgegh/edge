@@ -20,6 +20,6 @@ runcmd:
   - sudo apt update -y && sudo apt upgrade -y && sudo apt dist-upgrade -y && sudo apt autoremove -y && sudo apt auto-clean -y
   - az extension add --name connectedk8s
   - az login --service-principal --username __MYAZURESERVICEPRINCIPALID__ --password __MYAZURESERVICEPRINCIPALSECRET__ --tenant __MYAZURETENANTID__
- # - sudo azcmagent connect --service-principal-id __MYAZURESERVICEPRINCIPALID__ --service-principal-secret __MYAZURESERVICEPRINCIPALSECRET__ --resource-group __MYAZURERESOURCEGROUP__ --tenant-id __MYAZURETENANTID__ --location __MYAZURELOCATION__ --subscription-id __MYAZURESUBSCRIPTIONID__ --cloud "AzureCloud" --tags 'ArcSQLServerExtensionDeployment=Disabled' --correlation-id $(uuidgen)
+#  - sudo azcmagent connect --service-principal-id __MYAZURESERVICEPRINCIPALID__ --service-principal-secret __MYAZURESERVICEPRINCIPALSECRET__ --resource-group __MYAZURERESOURCEGROUP__ --tenant-id __MYAZURETENANTID__ --location __MYAZURELOCATION__ --subscription-id __MYAZURESUBSCRIPTIONID__ --cloud "AzureCloud" --tags 'ArcSQLServerExtensionDeployment=Disabled' --correlation-id $(uuidgen)
   - az connectedk8s connect --name __CLUSTERNAME__ --resource-group __MYAZURERESOURCEGROUP__ --location __MYAZURELOCATION__ --correlation-id "$(uuidgen)" --tags "Datacenter=__MYAZURETAGSDATACENTER__ City=__MYAZURETAGSCITY__ StateOrDistrict=__MYAZURETAGSSTATEORDISTRICT__ CountryOrRegion=__MYAZURETAGSCOUNTRYORREGION__ owner=__MYAZURETAGSOWNER__ environment=__MYAZURETAGSENVIRONMENT__"
 
